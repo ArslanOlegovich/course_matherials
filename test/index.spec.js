@@ -74,4 +74,41 @@ describe('Tasks', function () {
             assert.equal(obj.res(),6)
         }); 
     });
+
+    describe('memory2', function () {
+        it('1 - 1 - 1 - 1', function () {
+            let obj = (new calculator(1,1, ''));
+            obj =  obj.minus().minus(1).minus(1);
+            assert.equal(obj.res(),(-2))
+        }); 
+    });
+    describe('memory3', function () {
+        it('1 - 1 - 1 + 1', function () {
+            let obj = (new calculator(1,1, ''));
+            obj =  obj.minus().minus(1).sum(1);
+            assert.equal(obj.res(),(0))
+        }); 
+    });
+    describe('memory4', function () {
+        it('1 * 2 * 1 * 4', function () {
+            let obj = (new calculator(1,2, ''));
+            obj =  obj.multiply().multiply(1).multiply(4);
+            assert.equal(obj.res(),(8))
+        }); 
+    });
+    describe('memory5', function () {
+        it('1 * 2 * 1 + 4', function () {
+            let obj = (new calculator(1,2, ''));
+            obj =  obj.multiply().multiply(1).sum(4);
+            assert.equal(obj.res(),(6))
+        }); 
+    });
+    describe('memory6', function () {
+        it('1 / 2 / 4', function () {
+            let obj = (new calculator(1,2, ''));
+            obj =  obj.del().del();
+            assert.equal(obj.res(),(0.125))
+        }); 
+    });
+
 });
