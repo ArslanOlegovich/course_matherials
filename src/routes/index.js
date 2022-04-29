@@ -1,5 +1,6 @@
 import DB from "../database";
 import users from './users';
+import postData from './post';
 const db = DB.getInstance();
 
 export default {
@@ -30,5 +31,6 @@ export default {
             }
         }
     },
-    ...users
+    ...users,
+    ...postData
 };

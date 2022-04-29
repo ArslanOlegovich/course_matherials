@@ -64,6 +64,13 @@ server.on('request', async (request, res) => {
         request.customPathTest = '/users/:userId';
     }
 
+    if (request.customPathTest.startsWith('/postData/') && request.customPathTest.length > 10) {
+        request.queryParams = {
+            userId: request.customPathTest.slice(10)
+        };
+        request.customPathTest = '/postData/:userId';
+    }
+
     if (!routes[request.customPathTest] || !routes[request.customPathTest][method]) {
         res.writeHead(404, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({

@@ -1,5 +1,5 @@
 import {v4} from 'uuid';
-import {faker} from '@faker-js/faker';
+import faker from '@faker-js/faker';
 import PageNotFound from '../errors/PageNotFound';
 import ValidationError from '../errors/ValidationError';
 
@@ -80,6 +80,29 @@ let data = {
     },
     posts: {}
 };
+for(let i=0; i < 10; i++){
+  let user = {
+    id: v4(),
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
+    avatar: faker.internet.avatar(),
+    email: faker.internet.email()
+  };
+
+  let postData = {
+    id : v4(),
+    name: faker.lorem.word(),
+    genre: faker.lorem.word(),
+    autorId: user.id
+  };
+  console.log ('user data: ', user);
+  console.log ('post data: ', postData);
+  data['users'][user.id] = user;
+  data['posts'][postData.id] = postData;
+}
+//console.log ('data: ', postData);
+
+
 /* users: {
   '_id': {
       id: '',
